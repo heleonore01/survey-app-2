@@ -16,25 +16,26 @@
         },
         {
           "type": "radiogroup",
-          "name": "question1",
+          "name": "question1-age",
           "startWithNewLine": false,
           "title": "Wie alt bist du?",
           "hideNumber": true,
+          "isRequired": true,
           "choices": [
             {
-              "value": "Item 1",
+              "value": "<20",
               "text": "Unter 20 Jahre"
             },
             {
-              "value": "Item 2",
+              "value": "20-39",
               "text": "20 - 39 Jahre"
             },
             {
-              "value": "Item 3",
+              "value": "40-59",
               "text": "40 - 59 Jahre"
             },
             {
-              "value": "Item 4",
+              "value": "60<",
               "text": "60 Jahre oder älter"
             }
           ]
@@ -55,26 +56,27 @@
         },
         {
           "type": "radiogroup",
-          "name": "question2",
+          "name": "question2-height",
           "startWithNewLine": false,
           "title": "Wie groß bist du?",
           "titleLocation": "top",
           "hideNumber": true,
+          "isRequired": true,
           "choices": [
             {
-              "value": "Item 1",
+              "value": "<149",
               "text": "Unter 149 cm"
             },
             {
-              "value": "Item 3",
+              "value": "150-169",
               "text": "150-169cm"
             },
             {
-              "value": "Item 2",
+              "value": "170-189",
               "text": "170-189 cm"
             },
             {
-              "value": "Item 4",
+              "value": "190<",
               "text": "190 cm und größer"
             }
           ]
@@ -94,22 +96,23 @@
         },
         {
           "type": "radiogroup",
-          "name": "question3",
+          "name": "question3-gender",
           "startWithNewLine": false,
           "title": "Du bist...",
           "titleLocation": "top",
           "hideNumber": true,
+          "isRequired": true,
           "choices": [
             {
-              "value": "Item 1",
+              "value": "Female",
               "text": "Weiblich"
             },
             {
-              "value": "Item 3",
+              "value": "Male",
               "text": "Männlich"
             },
             {
-              "value": "Item 2",
+              "value": "Diverse",
               "text": "Divers"
             }
           ]
@@ -129,25 +132,26 @@
         },
         {
           "type": "radiogroup",
-          "name": "look",
+          "name": "question4-look",
           "startWithNewLine": false,
           "title": "Wie fühlst du dich, wenn dich andere Menschen anschauen?",
           "hideNumber": true,
+          "isRequired": true,
           "choices": [
             {
-              "value": "Item 1",
+              "value": "confident",
               "text": "Selbstbewusst"
             },
             {
-              "value": "Item 2",
+              "value": "flattered",
               "text": "Geschmeichelt"
             },
             {
-              "value": "Item 3",
+              "value": "nervous",
               "text": "Nervös"
             },
             {
-              "value": "Item 4",
+              "value": "neutral",
               "text": "Neutral"
             }
           ]
@@ -159,27 +163,28 @@
       "elements": [
         {
           "type": "imagepicker",
-          "name": "friend-request",
+          "name": "question5-friendrequest",
           "title": "Wem würdest Du eine Freundschaftsanfrage stellen?",
           "hideNumber": true,
+          "isRequired": true,
           "choices": [
             {
-              "value": "Image 1",
+              "value": "Madeleine Gonzalez",
               "text": "Madeleine Gonzalez",
               "imageLink": "http://localhost:3000/media/q5-1.jpg"
             },
             {
-              "value": "Image 2",
+              "value": "Anton Frank",
               "text": "Anton Frank",
               "imageLink": "http://localhost:3000/media/q3.jpg"
             },
             {
-              "value": "Image 3",
+              "value": "Elisabeth Stulta",
               "text": "Elisabeth Stulta",
               "imageLink": "http://localhost:3000/media/q5-3.jpg"
             },
             {
-              "value": "Image 4",
+              "value": "Behinderter Mann",
               "text": "Behinderter Mann",
               "imageLink": "http://localhost:3000/media/q5-4.jpg"
             }
@@ -194,7 +199,7 @@
       "elements": [
         {
           "type": "rating",
-          "name": "like",
+          "name": "exhibition1-satisfaction",
           "title": "Wie gefällt Dir die Ausstellung?",
           "hideNumber": true,
           "rateType": "stars",
@@ -203,7 +208,7 @@
         },
         {
           "type": "rating",
-          "name": "think",
+          "name": "exhibition2-reflection",
           "title": "Bringt Dich die Ausstellung zum Nachdenken?",
           "hideNumber": true,
           "rateType": "stars",
@@ -212,7 +217,7 @@
         },
         {
           "type": "rating",
-          "name": "feel",
+          "name": "exhibition3-touched-emotion",
           "title": "Mich haben die Lebensgeschichten der Menschen in der Ausstellung berührt",
           "hideNumber": true,
           "rateType": "stars",
