@@ -14,8 +14,10 @@ const SurveyForm = ({ onComplete }) => {
   const survey = new Model(surveyData);
 
   const handleComplete = async (survey) => {
+    console.log("Survey data:", survey.data);
+
     try {
-      await axios.post("http://localhost:5001/api/survey", survey.data); //
+      await axios.post("http://lnx-007.khm.at/api/survey/", survey.data); //
     } catch (error) {
       console.error(
         "Es gab einen Fehler beim Speichern der Umfrageantworten:",
