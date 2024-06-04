@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Survey } from "survey-react-ui";
 import "survey-core/defaultV2.min.css";
 import "./override.css";
 import { StylesManager, Model } from "survey-core";
 import axios from "axios";
-
-// Importiere die JSON-Datei
+import { useNavigate } from "react-router-dom";
 import surveyData from "./survey.json";
 
 StylesManager.applyTheme("defaultV2");
 
-const SurveyForm = ({ onComplete }) => {
+const SurveyForm = () => {
+  const navigate = useNavigate();
   const survey = new Model(surveyData);
 
   const handleComplete = async (survey) => {
     console.log("Survey data:", survey.data);
 
     try {
-      await axios.post("http://lnx-007.khm.at/api/survey/", survey.data); //
+      await axios.post("http://lnx-007.khm.at/api/survey/", survey.data);
+      // Redirect to the results page
+      navigate("/");
     } catch (error) {
       console.error(
         "Es gab einen Fehler beim Speichern der Umfrageantworten:",
