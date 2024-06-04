@@ -88,6 +88,8 @@ const SurveyResults = () => {
 
   const barOptions = {
     indexAxis: "y", // This makes the bars horizontal
+    responsive: true,
+    maintainAspectRatio: false,
     scales: {
       x: {
         beginAtZero: true,
@@ -116,7 +118,6 @@ const SurveyResults = () => {
         display: false, // Hide legend
       },
     },
-    maintainAspectRatio: false,
   };
 
   // Define chart data
@@ -130,58 +131,82 @@ const SurveyResults = () => {
   const emotionalImpactData = processData("exhibition3-touched-emotion");
 
   return (
-    <div>
-      <div>
-        <h3>Age Distribution</h3>
-        <Bar
-          data={ageDistributionData}
-          options={barOptions}
-          plugins={[backgroundColorPlugin]}
-        />
+    <div className="results-container">
+      <div className="demographics-container">
+        <div>
+          <h3>Age Distribution</h3>
+          <div style={{ width: "100%", height: "300px" }}>
+            <Bar
+              data={ageDistributionData}
+              options={barOptions}
+              plugins={[backgroundColorPlugin]}
+            />
+          </div>
+        </div>
+        <div>
+          <h3>Height Distribution</h3>
+          <div style={{ width: "100%", height: "300px" }}>
+            <Bar
+              data={heightDistributionData}
+              options={barOptions}
+              plugins={[backgroundColorPlugin]}
+            />
+          </div>
+        </div>
+        <div>
+          <h3>Gender Distribution</h3>
+          <div style={{ width: "100%", height: "300px" }}>
+            <Bar
+              data={genderDistributionData}
+              options={barOptions}
+              plugins={[backgroundColorPlugin]}
+            />
+          </div>
+        </div>
       </div>
-      <div>
-        <h3>Height Distribution</h3>
-        <Bar
-          data={heightDistributionData}
-          options={barOptions}
-          plugins={[backgroundColorPlugin]}
-        />
+      <div className="feelings-container">
+        <div>
+          <h3>Feelings when Looked At</h3>
+          <div style={{ width: "100%", height: "300px" }}>
+            <Bar
+              data={lookFeelingsData}
+              options={barOptions}
+              plugins={[backgroundColorPlugin]}
+            />
+          </div>
+        </div>
       </div>
-      <div>
-        <h3>Gender Distribution</h3>
-        <Bar
-          data={genderDistributionData}
-          options={barOptions}
-          plugins={[backgroundColorPlugin]}
-        />
+      <div className="friend-container">
+        <div>
+          <h3>Friend Request Choice</h3>
+          <div style={{ width: "100%", height: "300px" }}>
+            <Bar
+              data={friendRequestChoiceData}
+              options={barOptions}
+              plugins={[backgroundColorPlugin]}
+            />
+          </div>
+        </div>
       </div>
-      <div>
-        <h3>Feelings when Looked At</h3>
-        <Bar
-          data={lookFeelingsData}
-          options={barOptions}
-          plugins={[backgroundColorPlugin]}
-        />
-      </div>
-      <div>
-        <h3>Friend Request Choice</h3>
-        <Bar
-          data={friendRequestChoiceData}
-          options={barOptions}
-          plugins={[backgroundColorPlugin]}
-        />
-      </div>
-      <div>
-        <h3>Exhibition Satisfaction</h3>
-        <Pie data={exhibitionSatisfactionData} />
-      </div>
-      <div>
-        <h3>Exhibition Reflection</h3>
-        <Pie data={exhibitionReflectionData} />
-      </div>
-      <div>
-        <h3>Emotional Impact</h3>
-        <Pie data={emotionalImpactData} />
+      <div className="exhibition-container">
+        <div>
+          <h3>Exhibition Satisfaction</h3>
+          <div style={{ width: "100%", height: "300px" }}>
+            <Pie data={exhibitionSatisfactionData} />
+          </div>
+        </div>
+        <div>
+          <h3>Exhibition Reflection</h3>
+          <div style={{ width: "100%", height: "300px" }}>
+            <Pie data={exhibitionReflectionData} />
+          </div>
+        </div>
+        <div>
+          <h3>Emotional Impact</h3>
+          <div style={{ width: "100%", height: "300px" }}>
+            <Pie data={emotionalImpactData} />
+          </div>
+        </div>
       </div>
       <button onClick={() => navigate("/survey")}>Starte die Umfrage</button>
     </div>
