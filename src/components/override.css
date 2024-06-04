@@ -1,0 +1,191 @@
+@font-face {
+  font-family: "Work Sans";
+  src: url("./fonts/WorkSans-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900; /* Anpassen je nach verfügbarem Gewichtsbereich */
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: url("./fonts/WorkSans-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900; /* Anpassen je nach verfügbarem Gewichtsbereich */
+  font-style: italic;
+}
+
+:root {
+  --bg-green: #238459;
+  --black: #2b3526;
+  --acc-green: #5cf675;
+  --white: #f4f3f0;
+
+  --bold: 700;
+  --regular: 400;
+  --light: 300;
+
+  --xx-small: 0.6rem;
+  --extra-small: 0.75rem;
+  --small: 1rem;
+  --medium: 1.25rem;
+  --medium-large: 1.75rem;
+  --large: 2.5rem;
+  --xlarge: 4.75rem;
+  --huge: 6rem;
+}
+
+.survey-container {
+  display: flex;
+  align-items: flex-start;
+  height: 100vh;
+}
+
+.survey-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.image-container {
+  flex: 1;
+
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image-container img {
+  height: 100%;
+}
+
+.survey-content {
+  flex: 2;
+  width: 60%;
+}
+
+.sd-container-modern {
+  height: 100vh;
+}
+
+.sd-element--with-frame {
+  background: var(--bg-green);
+}
+
+/*Progress*/
+
+.sd-progress-buttons__list
+  li
+  .sd-progress-buttons__button
+  .sd-progress-buttons__button-content {
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  border-radius: 5px;
+}
+.sd-progress-buttons__list
+  .sd-progress-buttons__list-element--current
+  .sd-progress-buttons__button
+  .sd-progress-buttons__button-content,
+.sd-progress-buttons__list
+  .sd-progress-buttons__list-element--passed
+  .sd-progress-buttons__button
+  .sd-progress-buttons__button-content {
+  border: calc(0.5 * (var(--sjs-base-unit, var(--base-unit, 8px)))) solid
+    var(--black, var(--black, #19b394));
+  background-color: var(--black, var(--black));
+  opacity: 1;
+}
+
+/*BUTTONS*/
+
+.sd-btn {
+  display: flex;
+  height: 3.3125rem;
+  padding: 1rem 1.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  flex: 1 0;
+  border-radius: 3.125rem;
+  color: var(--black);
+  box-shadow: none;
+  font-family: "Work Sans";
+  font-size: var(--medium) !important;
+}
+
+#sv-nav-next {
+  width: 70%;
+}
+#sv-nav-prev {
+  width: 30%;
+}
+
+.sd-body__navigation.sd-action-bar {
+  flex-wrap: nowrap;
+}
+#sv-nav-prev .sd-navigation__prev-btn {
+  border-radius: 3.125rem;
+  border: 1px solid var(--black);
+  background: transparent;
+}
+.sd-navigation__next-btn {
+  background: var(--acc-green);
+}
+
+/*Title*/
+
+.sd-title .sv-title-actions {
+  align-items: baseline;
+  display: flex;
+}
+.sd-title .sv-title-actions .sv-title-actions__title {
+  flex-wrap: nowrap;
+  flex: 0 1 auto;
+  /* max-width: calc(100% - 3* var(--sjs-base-unit, var(--base-unit, 8px))); */
+  white-space: initial;
+  min-width: unset;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.sd-element--with-frame .sd-item__control-label {
+  color: var(--white);
+}
+
+.sd-element__title .sv-string-viewer.sv-string-viewer--multiline {
+  color: var(--white);
+  font-size: var(--large);
+  line-height: 120%;
+  font-family: Georgia;
+  font-weight: var(--regular);
+  text-align: center;
+}
+
+.sd-element__title .sd-element__num {
+  display: none;
+}
+
+/*ANTWORTEN*/
+
+.sd-radio__decorator {
+  display: none;
+}
+
+.sd-item__control-label {
+  text-align: center;
+}
+
+.sd-selectbase__label {
+  display: flex;
+  position: relative;
+  gap: var(--sjs-base-unit, var(--base-unit, 8px));
+  vertical-align: top;
+  max-width: 100%;
+  border-radius: 0.625rem;
+  background: rgba(244, 243, 240, 0.15);
+  padding: 20px;
+}
+
+.sd-item--checked .sd-selectbase__label {
+  border-radius: 0.625rem;
+  border: 2px solid var(--acc-green);
+  background: rgba(244, 243, 240, 0.25);
+}

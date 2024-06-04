@@ -1,0 +1,235 @@
+{
+  "locale": "de",
+  "logoPosition": "right",
+  "pages": [
+    {
+      "name": "age",
+      "elements": [
+        {
+          "type": "image",
+          "name": "question1IMG",
+
+          "imageLink": "http://localhost:3000/media/q1.jpg",
+          "imageFit": "cover",
+          "imageHeight": "auto",
+          "imageWidth": "100%"
+        },
+        {
+          "type": "radiogroup",
+          "name": "question1",
+          "startWithNewLine": false,
+          "title": "Wie alt bist du?",
+          "hideNumber": true,
+          "choices": [
+            {
+              "value": "Item 1",
+              "text": "Unter 20 Jahre"
+            },
+            {
+              "value": "Item 2",
+              "text": "20 - 39 Jahre"
+            },
+            {
+              "value": "Item 3",
+              "text": "40 - 59 Jahre"
+            },
+            {
+              "value": "Item 4",
+              "text": "60 Jahre oder älter"
+            }
+          ]
+        }
+      ],
+      "questionTitleLocation": "top"
+    },
+    {
+      "name": "height",
+      "elements": [
+        {
+          "type": "image",
+          "name": "question2IMG",
+          "imageLink": "http://localhost:3000/media/q3.jpg",
+          "imageFit": "cover",
+          "imageHeight": "auto",
+          "imageWidth": "100%"
+        },
+        {
+          "type": "radiogroup",
+          "name": "question2",
+          "startWithNewLine": false,
+          "title": "Wie groß bist du?",
+          "titleLocation": "top",
+          "hideNumber": true,
+          "choices": [
+            {
+              "value": "Item 1",
+              "text": "Unter 149 cm"
+            },
+            {
+              "value": "Item 3",
+              "text": "150-169cm"
+            },
+            {
+              "value": "Item 2",
+              "text": "170-189 cm"
+            },
+            {
+              "value": "Item 4",
+              "text": "190 cm und größer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gender",
+      "elements": [
+        {
+          "type": "image",
+          "name": "question3IMG",
+          "imageLink": "http://localhost:3000/media/q2.jpg",
+          "imageFit": "cover",
+          "imageHeight": "auto",
+          "imageWidth": "100%"
+        },
+        {
+          "type": "radiogroup",
+          "name": "question3",
+          "startWithNewLine": false,
+          "title": "Du bist...",
+          "titleLocation": "top",
+          "hideNumber": true,
+          "choices": [
+            {
+              "value": "Item 1",
+              "text": "Weiblich"
+            },
+            {
+              "value": "Item 3",
+              "text": "Männlich"
+            },
+            {
+              "value": "Item 2",
+              "text": "Divers"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "looking",
+      "elements": [
+        {
+          "type": "image",
+          "name": "question4IMG",
+          "imageLink": "http://localhost:3000/media/q4",
+          "imageFit": "cover",
+          "imageHeight": "100%",
+          "imageWidth": "auto"
+        },
+        {
+          "type": "radiogroup",
+          "name": "look",
+          "startWithNewLine": false,
+          "title": "Wie fühlst du dich, wenn dich andere Menschen anschauen?",
+          "hideNumber": true,
+          "choices": [
+            {
+              "value": "Item 1",
+              "text": "Selbstbewusst"
+            },
+            {
+              "value": "Item 2",
+              "text": "Geschmeichelt"
+            },
+            {
+              "value": "Item 3",
+              "text": "Nervös"
+            },
+            {
+              "value": "Item 4",
+              "text": "Neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "friend",
+      "elements": [
+        {
+          "type": "imagepicker",
+          "name": "friend-request",
+          "title": "Wem würdest Du eine Freundschaftsanfrage stellen?",
+          "hideNumber": true,
+          "choices": [
+            {
+              "value": "Image 1",
+              "text": "Madeleine Gonzalez",
+              "imageLink": "http://localhost:3000/media/q5-1.jpg"
+            },
+            {
+              "value": "Image 2",
+              "text": "Anton Frank",
+              "imageLink": "http://localhost:3000/media/q3.jpg"
+            },
+            {
+              "value": "Image 3",
+              "text": "Elisabeth Stulta",
+              "imageLink": "http://localhost:3000/media/q5-3.jpg"
+            },
+            {
+              "value": "Image 4",
+              "text": "Behinderter Mann",
+              "imageLink": "http://localhost:3000/media/q5-4.jpg"
+            }
+          ],
+          "imageFit": "cover",
+          "showLabel": true
+        }
+      ]
+    },
+    {
+      "name": "satisfaction",
+      "elements": [
+        {
+          "type": "rating",
+          "name": "like",
+          "title": "Wie gefällt Dir die Ausstellung?",
+          "hideNumber": true,
+          "rateType": "stars",
+          "minRateDescription": "Nicht gut",
+          "maxRateDescription": "Sehr gut"
+        },
+        {
+          "type": "rating",
+          "name": "think",
+          "title": "Bringt Dich die Ausstellung zum Nachdenken?",
+          "hideNumber": true,
+          "rateType": "stars",
+          "minRateDescription": "Nein",
+          "maxRateDescription": "Ja"
+        },
+        {
+          "type": "rating",
+          "name": "feel",
+          "title": "Mich haben die Lebensgeschichten der Menschen in der Ausstellung berührt",
+          "hideNumber": true,
+          "rateType": "stars",
+          "minRateDescription": "Nein",
+          "maxRateDescription": "Ja"
+        }
+      ]
+    }
+  ],
+  "showTitle": false,
+  "showPageTitles": false,
+  "showQuestionNumbers": "off",
+  "showProgressBar": "aboveheader",
+  "progressBarInheritWidthFrom": "survey",
+  "pagePrevText": "Zurück",
+  "pageNextText": "Nächste Frage",
+  "completeText": "Zu den Ergebnissen",
+  "firstPageIsStarted": false,
+  "widthMode": "responsive"
+}
