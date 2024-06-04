@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Bar, Pie } from "react-chartjs-2";
+import { Bar, Line, Pie } from "react-chartjs-2";
 import "chart.js/auto";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 // Plugin to draw a background color extending to 100%
 const backgroundColorPlugin = {
@@ -79,7 +82,7 @@ const SurveyResults = () => {
           backgroundColor: backgroundColors,
           borderColor: backgroundColors,
           borderWidth: 1,
-          borderRadius: 20, // Rounded bars
+          borderRadius: 5, // Rounded bars
           barPercentage: 0.5, // Adjust bar thickness
         },
       ],
@@ -131,84 +134,110 @@ const SurveyResults = () => {
   const emotionalImpactData = processData("exhibition3-touched-emotion");
 
   return (
-    <div className="results-container">
-      <div className="demographics-container">
-        <div>
-          <h3>Age Distribution</h3>
-          <div style={{ width: "100%", height: "300px" }}>
-            <Bar
-              data={ageDistributionData}
-              options={barOptions}
-              plugins={[backgroundColorPlugin]}
-            />
-          </div>
-        </div>
-        <div>
-          <h3>Height Distribution</h3>
-          <div style={{ width: "100%", height: "300px" }}>
-            <Bar
-              data={heightDistributionData}
-              options={barOptions}
-              plugins={[backgroundColorPlugin]}
-            />
-          </div>
-        </div>
-        <div>
-          <h3>Gender Distribution</h3>
-          <div style={{ width: "100%", height: "300px" }}>
-            <Bar
-              data={genderDistributionData}
-              options={barOptions}
-              plugins={[backgroundColorPlugin]}
-            />
-          </div>
-        </div>
+    <div>
+      <div className="results-container">
+        <Row className="charts-container">
+          <Col>
+            <Row>
+              <Col>
+                {" "}
+                <div>
+                  <div className="chart-element">
+                    <div className="chart-headline">
+                      <h3>
+                        334 Teilnehmer*innen fühlen sich{" "}
+                        <span className="pink">selbstbewusst</span>
+                      </h3>
+                      <h2>wenn sie angeschaut werden</h2>
+                    </div>
+                    <div>
+                      <Bar
+                        data={ageDistributionData}
+                        options={barOptions}
+                        plugins={[backgroundColorPlugin]}
+                      />
+                    </div>
+                  </div>
+                  <div className="chart-element">
+                    <h3>Height Distribution</h3>
+                    <div>
+                      <Bar
+                        data={heightDistributionData}
+                        options={barOptions}
+                        plugins={[backgroundColorPlugin]}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="chart-element">
+                    <h3>Gender Distribution</h3>
+                    <div>
+                      <Bar
+                        data={genderDistributionData}
+                        options={barOptions}
+                        plugins={[backgroundColorPlugin]}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col>
+                <div>
+                  <div className="chart-element">
+                    <h3>Friend Request Choice</h3>
+                    <div>
+                      <Bar
+                        data={friendRequestChoiceData}
+                        options={barOptions}
+                        plugins={[backgroundColorPlugin]}
+                      />
+                    </div>
+                  </div>
+                </div>{" "}
+                <div>
+                  <div className="chart-element">
+                    <h3>Feelings when Looked At</h3>
+                    <div>
+                      <Bar
+                        data={lookFeelingsData}
+                        options={barOptions}
+                        plugins={[backgroundColorPlugin]}
+                      />
+                    </div>
+                  </div>
+                </div>{" "}
+              </Col>
+            </Row>
+          </Col>
+
+          <Row>
+            <Col>
+              <h3>Exhibition Satisfaction</h3>
+              <div>
+                <Bar data={exhibitionSatisfactionData} />
+              </div>
+            </Col>
+            <Col>
+              <h3>Exhibition Reflection</h3>
+              <div>
+                <Bar data={exhibitionReflectionData} />
+              </div>
+            </Col>
+
+            <Col>
+              <h3>Emotional Impact</h3>
+              <div>
+                <Bar data={emotionalImpactData} />
+              </div>
+            </Col>
+          </Row>
+        </Row>
+        <Row className="start">
+          <button onClick={() => navigate("/survey")}>
+            Starte die Umfrage
+          </button>
+        </Row>
       </div>
-      <div className="feelings-container">
-        <div>
-          <h3>Feelings when Looked At</h3>
-          <div style={{ width: "100%", height: "300px" }}>
-            <Bar
-              data={lookFeelingsData}
-              options={barOptions}
-              plugins={[backgroundColorPlugin]}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="friend-container">
-        <div>
-          <h3>Friend Request Choice</h3>
-          <div style={{ width: "100%", height: "300px" }}>
-            <Bar
-              data={friendRequestChoiceData}
-              options={barOptions}
-              plugins={[backgroundColorPlugin]}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="exhibition-container">
-        <div>
-          <h3>Exhibition Satisfaction</h3>
-          <div style={{ width: "100%", height: "300px" }}>
-            <Pie data={exhibitionSatisfactionData} />
-          </div>
-        </div>
-        <div>
-          <h3>Exhibition Reflection</h3>
-          <div style={{ width: "100%", height: "300px" }}>
-            <Pie data={exhibitionReflectionData} />
-          </div>
-        </div>
-        <div>
-          <h3>Emotional Impact</h3>
-          <div style={{ width: "100%", height: "300px" }}>
-            <Pie data={emotionalImpactData} />
-          </div>
-        </div>
-      </div>
-      <button onClick={() => navigate("/survey")}>Starte die Umfrage</button>
     </div>
   );
 };

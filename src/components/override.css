@@ -16,6 +16,7 @@
   --black: #2b3526;
   --acc-green: #5cf675;
   --white: #f4f3f0;
+  --light-pink: #ffc7db;
 
   --bold: 700;
   --regular: 400;
@@ -95,7 +96,9 @@
 
 /*BUTTONS*/
 
-.sd-btn {
+.sd-btn,
+.start button {
+  border: none;
   display: flex;
   height: 3.3125rem;
   padding: 1rem 1.5rem;
@@ -125,7 +128,8 @@
   border: 1px solid var(--black);
   background: transparent;
 }
-.sd-navigation__next-btn {
+.sd-navigation__next-btn,
+.start button {
   background: var(--acc-green);
 }
 
@@ -188,4 +192,48 @@
   border-radius: 0.625rem;
   border: 2px solid var(--acc-green);
   background: rgba(244, 243, 240, 0.25);
+}
+
+/*RESULTS*/
+
+/*RESULTS LAYOUT*/
+
+.results-container {
+  background-color: var(--white);
+  height: 100vh;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.charts-container {
+  margin: 3rem;
+  background-color: var(--bg-green);
+  height: 100%;
+  padding: 4rem;
+  border-radius: 10px;
+}
+
+.chart-element {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+/*RESULTS STYLING*/
+
+h3,
+h3 * {
+  font-size: 1.75rem;
+  font-family: Georgia;
+  color: var(--white) !important;
+}
+
+span.pink {
+  color: var(--light-pink) !important;
+}
+
+h2,
+h2 * {
+  color: var(--white) !important;
 }
