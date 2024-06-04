@@ -4,6 +4,24 @@ import axios from "axios";
 import { Bar, Pie } from "react-chartjs-2";
 import "chart.js/auto";
 
+// Plugin to draw a background color extending to 100%
+const backgroundColorPlugin = {
+  id: "backgroundColorPlugin",
+  beforeDraw: (chart) => {
+    const ctx = chart.ctx;
+    const chartArea = chart.chartArea;
+    ctx.save();
+    ctx.fillStyle = "#2F4F4F"; // Dark background color
+    ctx.fillRect(
+      chartArea.left,
+      chartArea.top,
+      chartArea.right - chartArea.left,
+      chartArea.bottom - chartArea.top
+    );
+    ctx.restore();
+  },
+};
+
 const SurveyResults = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -12,9 +30,7 @@ const SurveyResults = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://lnx-007.khm.at/api/survey/results"
-        );
+        const response = await axios.get("/api/survey"); // Use relative path
         setData(response.data);
       } catch (err) {
         setError("Error fetching survey results");
@@ -49,44 +65,125 @@ const SurveyResults = () => {
       counts[key] = value;
     }
 
+    const maxCount = Math.max(...Object.values(counts));
+    const backgroundColors = labels.map((label) =>
+      counts[label] === maxCount ? "#EA87AB" : "#5CF675"
+    );
+
     return {
       labels: labels,
       datasets: [
         {
           label: "Number of Responses",
           data: Object.values(counts),
-          backgroundColor: "rgba(75, 192, 192, 0.6)",
-          borderColor: "rgba(75, 192, 192, 1)",
+          backgroundColor: backgroundColors,
+          borderColor: backgroundColors,
           borderWidth: 1,
+          borderRadius: 20, // Rounded bars
+          barPercentage: 0.5, // Adjust bar thickness
         },
       ],
     };
   };
 
-  const questions = [
-    { key: "question1-age", title: "Age Distribution" },
-    { key: "question2-height", title: "Height Distribution" },
-    { key: "question3-gender", title: "Gender Distribution" },
-    { key: "question4-look", title: "Feelings when Looked At" },
-    { key: "question5-friendrequest", title: "Friend Request Choice" },
-    { key: "exhibition1-satisfaction", title: "Exhibition Satisfaction" },
-    { key: "exhibition2-reflection", title: "Exhibition Reflection" },
-    { key: "exhibition3-touched-emotion", title: "Emotional Impact" },
-  ];
+  const barOptions = {
+    indexAxis: "y", // This makes the bars horizontal
+    scales: {
+      x: {
+        beginAtZero: true,
+        grid: {
+          display: false, // Remove grid lines
+        },
+        ticks: {
+          display: false, // Remove ticks
+        },
+      },
+      y: {
+        grid: {
+          display: false, // Remove grid lines
+        },
+        ticks: {
+          font: {
+            size: 14,
+            weight: "bold",
+            color: "#FFFFFF", // Label color
+          },
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false, // Hide legend
+      },
+    },
+    maintainAspectRatio: false,
+  };
+
+  // Define chart data
+  const ageDistributionData = processData("question1-age");
+  const heightDistributionData = processData("question2-height");
+  const genderDistributionData = processData("question3-gender");
+  const lookFeelingsData = processData("question4-look");
+  const friendRequestChoiceData = processData("question5-friendrequest");
+  const exhibitionSatisfactionData = processData("exhibition1-satisfaction");
+  const exhibitionReflectionData = processData("exhibition2-reflection");
+  const emotionalImpactData = processData("exhibition3-touched-emotion");
 
   return (
     <div>
+      <div>
+        <h3>Age Distribution</h3>
+        <Bar
+          data={ageDistributionData}
+          options={barOptions}
+          plugins={[backgroundColorPlugin]}
+        />
+      </div>
+      <div>
+        <h3>Height Distribution</h3>
+        <Bar
+          data={heightDistributionData}
+          options={barOptions}
+          plugins={[backgroundColorPlugin]}
+        />
+      </div>
+      <div>
+        <h3>Gender Distribution</h3>
+        <Bar
+          data={genderDistributionData}
+          options={barOptions}
+          plugins={[backgroundColorPlugin]}
+        />
+      </div>
+      <div>
+        <h3>Feelings when Looked At</h3>
+        <Bar
+          data={lookFeelingsData}
+          options={barOptions}
+          plugins={[backgroundColorPlugin]}
+        />
+      </div>
+      <div>
+        <h3>Friend Request Choice</h3>
+        <Bar
+          data={friendRequestChoiceData}
+          options={barOptions}
+          plugins={[backgroundColorPlugin]}
+        />
+      </div>
+      <div>
+        <h3>Exhibition Satisfaction</h3>
+        <Pie data={exhibitionSatisfactionData} />
+      </div>
+      <div>
+        <h3>Exhibition Reflection</h3>
+        <Pie data={exhibitionReflectionData} />
+      </div>
+      <div>
+        <h3>Emotional Impact</h3>
+        <Pie data={emotionalImpactData} />
+      </div>
       <button onClick={() => navigate("/survey")}>Starte die Umfrage</button>
-      {questions.map((question) => (
-        <div key={question.key}>
-          <h3>{question.title}</h3>
-          {question.key.startsWith("exhibition") ? (
-            <Pie data={processData(question.key)} />
-          ) : (
-            <Bar data={processData(question.key)} />
-          )}
-        </div>
-      ))}
     </div>
   );
 };
