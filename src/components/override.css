@@ -279,3 +279,9 @@ h2 * {
   flex: none;
   width: 50%;
 }
+
+/*RESULTS FRIEND REQUEST*/
+.friend-request {
+  display: flex;
+  flex-direction: column;
+}
