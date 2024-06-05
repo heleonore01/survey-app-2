@@ -3,16 +3,14 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
 import { Chart } from "chart.js"; // Import Chart explicitly
+import "./override.css";
 import "chart.js/auto";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import translations from "./resultsTranslation";
-import surveyData from "./survey-de.json"; // Import your survey data JSON
+import getSurveyData from "./surveyData";
+Chart.defaults.color = "#B6D2C3"; // Use Chart.defaults.color instead of Chart.defaults.global.defaultFontColor for Chart.js v3 and higher
 
-Chart.defaults.color = "#B6D2C3";
-
-// Plugin to draw a background color extending to 100%
 const backgroundColorPlugin = {
   id: "backgroundColorPlugin",
   beforeDraw: (chart) => {
@@ -24,11 +22,11 @@ const backgroundColorPlugin = {
     ctx.save();
 
     chart.data.datasets.forEach((dataset, datasetIndex) => {
-      ctx.fillStyle = "#2F4F4F"; // Dark background color for each bar
+      ctx.fillStyle = "#2F4F4F";
 
       chart.getDatasetMeta(datasetIndex).data.forEach((bar, index) => {
         const { x, y: barY, width, height } = bar;
-        const radius = 5; // Radius for rounded corners
+        const radius = 5;
         ctx.beginPath();
         ctx.moveTo(left + radius, barY - height / 2);
         ctx.lineTo(right - radius, barY - height / 2);
@@ -95,10 +93,23 @@ const SurveyResults = ({ locale, toggleLocale }) => {
     return <div>Loading...</div>;
   }
 
-  const processData = (questionKey, allPossibleLabels) => {
+  const surveyData = getSurveyData(locale);
+
+  const getLabelText = (questionName, value) => {
+    const question = surveyData.pages
+      .flatMap((page) => page.elements)
+      .find((element) => element.name === questionName);
+
+    if (question && question.choices) {
+      const choice = question.choices.find((choice) => choice.value === value);
+      return choice ? choice.text : value;
+    }
+    return value;
+  };
+
+  const processData = (questionKey, allPossibleLabels = []) => {
     const counts = {};
 
-    // Initialize counts for all possible labels
     allPossibleLabels.forEach((label) => {
       counts[label] = 0;
     });
@@ -110,16 +121,16 @@ const SurveyResults = ({ locale, toggleLocale }) => {
       }
     });
 
-    const labels = Object.keys(counts);
+    const labels = Object.keys(counts).map((value) =>
+      getLabelText(questionKey, value)
+    );
     const values = Object.values(counts);
 
     const maxCount = Math.max(...values);
-    const mostFrequentResponse = labels.find(
-      (label) => counts[label] === maxCount
-    );
+    const mostFrequentResponse = labels[values.indexOf(maxCount)];
 
-    const backgroundColors = labels.map((label) =>
-      counts[label] === maxCount ? "#EA87AB" : "#5CF675"
+    const backgroundColors = labels.map((label, index) =>
+      values[index] === maxCount ? "#EA87AB" : "#5CF675"
     );
 
     return {
@@ -143,97 +154,99 @@ const SurveyResults = ({ locale, toggleLocale }) => {
   };
 
   const getImageLink = (name) => {
-    // Find the corresponding image link for the given name in the survey data
     const friendQuestion = surveyData.pages
       .find((page) => page.name === "friend")
       .elements.find((el) => el.name === "question5-friendrequest");
-    const choice = friendQuestion.choices.find(
-      (choice) => choice.text === name
-    );
-    return choice ? choice.imageLink : "";
+
+    if (friendQuestion && friendQuestion.choices) {
+      const choice = friendQuestion.choices.find(
+        (choice) => choice.text === name
+      );
+      return choice ? choice.imageLink : "";
+    }
+    return "";
   };
 
   const horizontalOptions = {
-    indexAxis: "y", // This makes the bars horizontal
+    indexAxis: "y",
     responsive: true,
     maintainAspectRatio: false,
     scales: {
       x: {
         beginAtZero: true,
         grid: {
-          display: false, // Remove grid lines
+          display: false,
         },
         ticks: {
-          display: false, // Remove ticks
+          display: false,
           font: {
             size: 14,
             weight: "bold",
-            color: "#FFF", // Color for X-axis labels (change to desired color)
+            color: "#FFF",
           },
         },
       },
       y: {
         grid: {
-          display: false, // Remove grid lines
+          display: false,
         },
         ticks: {
           font: {
             size: 14,
             weight: "bold",
-            color: "#FFF", // Color for Y-axis labels (change to desired color)
+            color: "#FFF",
           },
         },
       },
     },
     plugins: {
       legend: {
-        display: false, // Hide legend
+        display: false,
       },
     },
-    devicePixelRatio: 2, // Increase pixel ratio for better rendering quality
+    devicePixelRatio: 2,
   };
 
   const verticalOptions = {
-    indexAxis: "x", // This makes the bars horizontal
+    indexAxis: "x",
     responsive: true,
     maintainAspectRatio: false,
     scales: {
       x: {
         beginAtZero: true,
         grid: {
-          display: false, // Remove grid lines
+          display: false,
         },
         ticks: {
-          display: false, // Remove ticks
+          display: false,
           font: {
             size: 14,
             weight: "bold",
-            color: "#FFF", // Color for X-axis labels (change to desired color)
+            color: "#FFF",
           },
         },
       },
       y: {
         grid: {
-          display: false, // Remove grid lines
+          display: false,
         },
         ticks: {
           font: {
             size: 14,
             weight: "bold",
-            color: "#FFF", // Color for Y-axis labels (change to desired color)
+            color: "#FFF",
           },
         },
       },
     },
     plugins: {
       legend: {
-        display: false, // Hide legend
+        display: false,
       },
     },
-    devicePixelRatio: 2, // Increase pixel ratio for better rendering quality
+    devicePixelRatio: 2,
   };
 
-  // Define all possible choices for each question
   const allPossibleLabels = {
     "question1-age": ["<20", "20-39", "40-59", "60<"],
     "question2-height": ["<149", "150-169", "170-189", "190<"],
@@ -243,14 +256,13 @@ const SurveyResults = ({ locale, toggleLocale }) => {
       "Madeleine Gonzalez",
       "Anton Frank",
       "Elisabeth Stulta",
-      "Behinderter Mann",
+      "Disabled Man",
     ],
     "exhibition1-satisfaction": ["1", "2", "3", "4", "5"],
     "exhibition2-reflection": ["1", "2", "3", "4", "5"],
     "exhibition3-touched-emotion": ["1", "2", "3", "4", "5"],
   };
 
-  // Define chart data
   const ageDistributionData = processData(
     "question1-age",
     allPossibleLabels["question1-age"]
@@ -283,7 +295,6 @@ const SurveyResults = ({ locale, toggleLocale }) => {
     "exhibition3-touched-emotion",
     allPossibleLabels["exhibition3-touched-emotion"]
   );
-
   return (
     <div>
       <div className="results-container">
@@ -305,7 +316,7 @@ const SurveyResults = ({ locale, toggleLocale }) => {
                     </div>
                     <div>
                       <Bar
-                        data={lookFeelingsData}
+                        data={ageDistributionData}
                         options={horizontalOptions}
                         plugins={[backgroundColorPlugin]}
                       />
@@ -349,10 +360,19 @@ const SurveyResults = ({ locale, toggleLocale }) => {
               <Col>
                 <div>
                   <div className="chart-element friend-request">
-                    <h3>{t.friendRequestChoice}</h3>
-                    <h3>
-                      {friendRequestChoiceData.mostFrequentResponse.response}
-                    </h3>{" "}
+                    <div className="chart-headline">
+                      {" "}
+                      <h3>{t.friendRequestChoice}</h3>
+                      <h3>
+                        <span className="pink">
+                          {" "}
+                          {
+                            friendRequestChoiceData.mostFrequentResponse
+                              .response
+                          }
+                        </span>
+                      </h3>{" "}
+                    </div>
                     <h3>{t.friendRequestChoice2}</h3>
                     <div>
                       <img
@@ -362,7 +382,6 @@ const SurveyResults = ({ locale, toggleLocale }) => {
                         alt={
                           friendRequestChoiceData.mostFrequentResponse.response
                         }
-                        style={{ width: "100%" }}
                       />
                     </div>
                   </div>

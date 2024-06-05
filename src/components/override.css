@@ -221,7 +221,7 @@
 }
 
 .satisfaction-chart-element {
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
@@ -284,4 +284,12 @@ h2 * {
 .friend-request {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+  align-items: center;
+  text-align: center;
+}
+.friend-request img {
+  height: 200px;
+  width: auto;
 }
