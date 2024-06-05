@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { Survey } from "survey-react-ui";
 import "survey-core/defaultV2.min.css";
 import "./override.css";
 import { StylesManager, Model } from "survey-core";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import surveyData from "./survey.json";
+import getSurveyData from "./surveyData";
 
 StylesManager.applyTheme("defaultV2");
 
-const SurveyForm = () => {
-  const navigate = useNavigate();
+const SurveyForm = ({ onComplete, locale }) => {
+  const [surveyData, setSurveyData] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  useEffect(() => {
+    setSurveyData(getSurveyData(locale));
+  }, [locale]);
+
+  if (!surveyData) {
+    return <div>Loading...</div>;
+  }
+
   const survey = new Model(surveyData);
 
   const handleComplete = async (survey) => {
@@ -18,13 +28,9 @@ const SurveyForm = () => {
 
     try {
       await axios.post("http://lnx-007.khm.at/api/survey/", survey.data);
-      // Redirect to the results page
-      navigate("/");
+      navigate("/results"); // Redirect to results page
     } catch (error) {
-      console.error(
-        "Es gab einen Fehler beim Speichern der Umfrageantworten:",
-        error
-      );
+      console.error("There was an error saving the survey responses:", error);
     }
   };
 

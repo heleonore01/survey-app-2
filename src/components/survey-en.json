@@ -1,0 +1,239 @@
+{
+  "locale": "en",
+  "logoPosition": "right",
+  "pages": [
+    {
+      "name": "age",
+      "elements": [
+        {
+          "type": "image",
+          "name": "question1IMG",
+          "imageLink": "http://localhost:3000/media/q1.jpg",
+          "imageFit": "cover",
+          "imageHeight": "auto",
+          "imageWidth": "100%"
+        },
+        {
+          "type": "radiogroup",
+          "name": "question1-age",
+          "startWithNewLine": false,
+          "title": "How old are you?",
+          "hideNumber": true,
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "<20",
+              "text": "Under 20 years"
+            },
+            {
+              "value": "20-39",
+              "text": "20 - 39 years"
+            },
+            {
+              "value": "40-59",
+              "text": "40 - 59 years"
+            },
+            {
+              "value": "60<",
+              "text": "60 years or older"
+            }
+          ]
+        }
+      ],
+      "questionTitleLocation": "top"
+    },
+    {
+      "name": "height",
+      "elements": [
+        {
+          "type": "image",
+          "name": "question2IMG",
+          "imageLink": "http://localhost:3000/media/q3.jpg",
+          "imageFit": "cover",
+          "imageHeight": "auto",
+          "imageWidth": "100%"
+        },
+        {
+          "type": "radiogroup",
+          "name": "question2-height",
+          "startWithNewLine": false,
+          "title": "How tall are you?",
+          "titleLocation": "top",
+          "hideNumber": true,
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "<149",
+              "text": "Under 149 cm"
+            },
+            {
+              "value": "150-169",
+              "text": "150-169 cm"
+            },
+            {
+              "value": "170-189",
+              "text": "170-189 cm"
+            },
+            {
+              "value": "190<",
+              "text": "190 cm and taller"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gender",
+      "elements": [
+        {
+          "type": "image",
+          "name": "question3IMG",
+          "imageLink": "http://localhost:3000/media/q2.jpg",
+          "imageFit": "cover",
+          "imageHeight": "auto",
+          "imageWidth": "100%"
+        },
+        {
+          "type": "radiogroup",
+          "name": "question3-gender",
+          "startWithNewLine": false,
+          "title": "You are...",
+          "titleLocation": "top",
+          "hideNumber": true,
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "Female",
+              "text": "Female"
+            },
+            {
+              "value": "Male",
+              "text": "Male"
+            },
+            {
+              "value": "Diverse",
+              "text": "Diverse"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "looking",
+      "elements": [
+        {
+          "type": "image",
+          "name": "question4IMG",
+          "imageLink": "http://localhost:3000/media/q4",
+          "imageFit": "cover",
+          "imageHeight": "100%",
+          "imageWidth": "auto"
+        },
+        {
+          "type": "radiogroup",
+          "name": "question4-look",
+          "startWithNewLine": false,
+          "title": "How do you feel when people look at you?",
+          "hideNumber": true,
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "confident",
+              "text": "Confident"
+            },
+            {
+              "value": "flattered",
+              "text": "Flattered"
+            },
+            {
+              "value": "nervous",
+              "text": "Nervous"
+            },
+            {
+              "value": "neutral",
+              "text": "Neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "friend",
+      "elements": [
+        {
+          "type": "imagepicker",
+          "name": "question5-friendrequest",
+          "title": "Who would you send a friend request to?",
+          "hideNumber": true,
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "Madeleine Gonzalez",
+              "text": "Madeleine Gonzalez",
+              "imageLink": "http://localhost:3000/media/q5-1.jpg"
+            },
+            {
+              "value": "Anton Frank",
+              "text": "Anton Frank",
+              "imageLink": "http://localhost:3000/media/q3.jpg"
+            },
+            {
+              "value": "Elisabeth Stulta",
+              "text": "Elisabeth Stulta",
+              "imageLink": "http://localhost:3000/media/q5-3.jpg"
+            },
+            {
+              "value": "Disabled Man",
+              "text": "Disabled Man",
+              "imageLink": "http://localhost:3000/media/q5-4.jpg"
+            }
+          ],
+          "imageFit": "cover",
+          "showLabel": true
+        }
+      ]
+    },
+    {
+      "name": "satisfaction",
+      "elements": [
+        {
+          "type": "rating",
+          "name": "exhibition1-satisfaction",
+          "title": "How do you like the exhibition?",
+          "hideNumber": true,
+          "rateType": "stars",
+          "minRateDescription": "Not good",
+          "maxRateDescription": "Very good"
+        },
+        {
+          "type": "rating",
+          "name": "exhibition2-reflection",
+          "title": "Does the exhibition make you reflect?",
+          "hideNumber": true,
+          "rateType": "stars",
+          "minRateDescription": "No",
+          "maxRateDescription": "Yes"
+        },
+        {
+          "type": "rating",
+          "name": "exhibition3-touched-emotion",
+          "title": "Were you emotionally touched by the stories of the people in the exhibition?",
+          "hideNumber": true,
+          "rateType": "stars",
+          "minRateDescription": "No",
+          "maxRateDescription": "Yes"
+        }
+      ]
+    }
+  ],
+  "showTitle": false,
+  "showPageTitles": false,
+  "showQuestionNumbers": "off",
+  "showProgressBar": "aboveheader",
+  "progressBarInheritWidthFrom": "survey",
+  "pagePrevText": "Previous",
+  "pageNextText": "Next Question",
+  "completeText": "To the Results",
+  "firstPageIsStarted": false,
+  "widthMode": "responsive"
+}

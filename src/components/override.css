@@ -97,7 +97,7 @@
 /*BUTTONS*/
 
 .sd-btn,
-.start button {
+.start-nav button {
   border: none;
   display: flex;
   height: 3.3125rem;
@@ -110,7 +110,7 @@
   color: var(--black);
   box-shadow: none;
   font-family: "Work Sans";
-  font-size: var(--medium) !important;
+  font-size: var(--medium-large) !important;
 }
 
 #sv-nav-next {
@@ -129,7 +129,7 @@
   background: transparent;
 }
 .sd-navigation__next-btn,
-.start button {
+.start-nav button {
   background: var(--acc-green);
 }
 
@@ -201,16 +201,16 @@
 .results-container {
   background-color: var(--white);
   height: 100vh;
-  padding: 4rem;
+  padding: 3rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 2rem;
 }
 .charts-container {
-  margin: 3rem;
   background-color: var(--bg-green);
   height: 100%;
-  padding: 4rem;
+  padding: 3rem;
   border-radius: 10px;
 }
 
@@ -218,6 +218,16 @@
   height: auto;
   display: flex;
   flex-direction: row;
+}
+
+.satisfaction-chart-element {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.satisfaction-container {
+  height: 20%;
 }
 
 /*RESULTS STYLING*/
@@ -236,4 +246,36 @@ span.pink {
 h2,
 h2 * {
   color: var(--white) !important;
+}
+
+/*RESULTAT NAV*/
+
+.language-switcher {
+  font-size: var(--medium-large);
+  font-family: Work Sans;
+}
+
+.language-switcher span {
+  cursor: pointer;
+}
+
+.language-switcher span.active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.language-switcher span:not(:last-child) {
+  margin-right: 10px;
+}
+
+.start-nav {
+  display: flex;
+  justify-content: space-between;
+  border-top: solid 2px var(--black);
+  padding-top: 2rem;
+}
+
+.start-nav button {
+  flex: none;
+  width: 50%;
 }
