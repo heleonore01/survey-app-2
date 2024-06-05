@@ -5,7 +5,7 @@ import "survey-core/defaultV2.min.css";
 import "./override.css";
 import { StylesManager, Model } from "survey-core";
 import axios from "axios";
-import getSurveyData from "./surveyData";
+import getSurveyData from "./data/surveyData";
 
 StylesManager.applyTheme("defaultV2");
 

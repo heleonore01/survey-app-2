@@ -1,69 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import translations from "./resultsTranslation";
 import { Bar } from "react-chartjs-2";
 import { Chart } from "chart.js"; // Import Chart explicitly
 import "./override.css";
 import "chart.js/auto";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import translations from "./resultsTranslation";
-import getSurveyData from "./surveyData";
+import getSurveyData from "./data/surveyData";
+import { backgroundColorPlugin } from "./chartPlugins"; // Import the plugin
+import { horizontalOptions, verticalOptions } from "./chartOptions"; // Import the options
+
 Chart.defaults.color = "#B6D2C3"; // Use Chart.defaults.color instead of Chart.defaults.global.defaultFontColor for Chart.js v3 and higher
-
-const backgroundColorPlugin = {
-  id: "backgroundColorPlugin",
-  beforeDraw: (chart) => {
-    const {
-      ctx,
-      chartArea: { left, right },
-      scales: { y },
-    } = chart;
-    ctx.save();
-
-    chart.data.datasets.forEach((dataset, datasetIndex) => {
-      ctx.fillStyle = "#2F4F4F";
-
-      chart.getDatasetMeta(datasetIndex).data.forEach((bar, index) => {
-        const { x, y: barY, width, height } = bar;
-        const radius = 5;
-        ctx.beginPath();
-        ctx.moveTo(left + radius, barY - height / 2);
-        ctx.lineTo(right - radius, barY - height / 2);
-        ctx.quadraticCurveTo(
-          right,
-          barY - height / 2,
-          right,
-          barY - height / 2 + radius
-        );
-        ctx.lineTo(right, barY + height / 2 - radius);
-        ctx.quadraticCurveTo(
-          right,
-          barY + height / 2,
-          right - radius,
-          barY + height / 2
-        );
-        ctx.lineTo(left + radius, barY + height / 2);
-        ctx.quadraticCurveTo(
-          left,
-          barY + height / 2,
-          left,
-          barY + height / 2 - radius
-        );
-        ctx.lineTo(left, barY - height / 2 + radius);
-        ctx.quadraticCurveTo(
-          left,
-          barY - height / 2,
-          left + radius,
-          barY - height / 2
-        );
-        ctx.fill();
-      });
-    });
-
-    ctx.restore();
-  },
-};
 
 const SurveyResults = ({ locale, toggleLocale }) => {
   const [data, setData] = useState(null);
@@ -165,86 +114,6 @@ const SurveyResults = ({ locale, toggleLocale }) => {
       return choice ? choice.imageLink : "";
     }
     return "";
-  };
-
-  const horizontalOptions = {
-    indexAxis: "y",
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      x: {
-        beginAtZero: true,
-        grid: {
-          display: false,
-        },
-        ticks: {
-          display: false,
-          font: {
-            size: 14,
-            weight: "bold",
-            color: "#FFF",
-          },
-        },
-      },
-      y: {
-        grid: {
-          display: false,
-        },
-        ticks: {
-          font: {
-            size: 14,
-            weight: "bold",
-            color: "#FFF",
-          },
-        },
-      },
-    },
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    devicePixelRatio: 2,
-  };
-
-  const verticalOptions = {
-    indexAxis: "x",
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      x: {
-        beginAtZero: true,
-        grid: {
-          display: false,
-        },
-        ticks: {
-          display: false,
-          font: {
-            size: 14,
-            weight: "bold",
-            color: "#FFF",
-          },
-        },
-      },
-      y: {
-        grid: {
-          display: false,
-        },
-        ticks: {
-          font: {
-            size: 14,
-            weight: "bold",
-            color: "#FFF",
-          },
-        },
-      },
-    },
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    devicePixelRatio: 2,
   };
 
   const allPossibleLabels = {
