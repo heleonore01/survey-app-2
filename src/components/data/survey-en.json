@@ -8,7 +8,7 @@
         {
           "type": "image",
           "name": "question1IMG",
-          "imageLink": "http://localhost:3000/media/q1.jpg",
+          "imageLink": "survey-app/public/media/q4.jpg",
           "imageFit": "cover",
           "imageHeight": "auto",
           "imageWidth": "100%"
@@ -48,7 +48,7 @@
         {
           "type": "image",
           "name": "question2IMG",
-          "imageLink": "http://localhost:3000/media/q3.jpg",
+          "imageLink": "./public/media/q3.jpg",
           "imageFit": "cover",
           "imageHeight": "auto",
           "imageWidth": "100%"
@@ -170,7 +170,7 @@
             {
               "value": "Madeleine Gonzalez",
               "text": "Madeleine Gonzalez",
-              "imageLink": "http://localhost:3000/media/q5-1.jpg"
+              "imageLink": "./media/q5-1.jpg"
             },
             {
               "value": "Anton Frank",
