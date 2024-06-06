@@ -36,7 +36,7 @@ export const horizontalOptions = {
       display: false,
     },
   },
-  devicePixelRatio: 2,
+  devicePixelRatio: 3,
 };
 
 export const verticalOptions = {
@@ -50,7 +50,6 @@ export const verticalOptions = {
         display: false,
       },
       ticks: {
-        display: false,
         font: {
           size: 14,
           weight: "bold",
@@ -63,6 +62,7 @@ export const verticalOptions = {
         display: false,
       },
       ticks: {
+        display: false,
         font: {
           size: 14,
           weight: "bold",
@@ -76,5 +76,5 @@ export const verticalOptions = {
       display: false,
     },
   },
-  devicePixelRatio: 2,
+  devicePixelRatio: 3,
 };

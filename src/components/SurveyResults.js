@@ -90,9 +90,9 @@ const SurveyResults = ({ locale, toggleLocale }) => {
           data: values,
           backgroundColor: backgroundColors,
           borderColor: backgroundColors,
-          borderWidth: 1,
+          borderWidth: 0,
           borderRadius: 5,
-          barPercentage: 0.5,
+          barPercentage: 1,
         },
       ],
       mostFrequentResponse: {
@@ -172,8 +172,8 @@ const SurveyResults = ({ locale, toggleLocale }) => {
             <Row>
               <Col>
                 <div>
-                  <div className="chart-element">
-                    <div className="chart-headline">
+                  <div className="chart-element border-bottom">
+                    <Col xs={4} className="chart-headline">
                       <h3>
                         {ageDistributionData.mostFrequentResponse.count}{" "}
                         {t.ageDistribution}{" "}
@@ -181,8 +181,10 @@ const SurveyResults = ({ locale, toggleLocale }) => {
                           {ageDistributionData.mostFrequentResponse.response}
                         </span>
                       </h3>
-                      <h2>{t.ageDistribution2}</h2>
-                    </div>
+                      <h2 className="satisfaction-chart-subtitles">
+                        {t.ageDistribution2}
+                      </h2>
+                    </Col>
                     <div>
                       <Bar
                         data={ageDistributionData}
@@ -191,15 +193,17 @@ const SurveyResults = ({ locale, toggleLocale }) => {
                       />
                     </div>
                   </div>
-                  <div className="chart-element">
-                    <h3>
-                      {heightDistributionData.mostFrequentResponse.count}{" "}
-                      {t.heightDistribution}{" "}
-                      <span className="pink">
-                        {heightDistributionData.mostFrequentResponse.response}
-                      </span>
-                      {t.heightDistribution2}{" "}
-                    </h3>
+                  <div className="chart-element border-bottom">
+                    <Col xs={4} className="chart-headline">
+                      <h3>
+                        {heightDistributionData.mostFrequentResponse.count}{" "}
+                        {t.heightDistribution}{" "}
+                        <span className="pink">
+                          {heightDistributionData.mostFrequentResponse.response}
+                        </span>
+                        {t.heightDistribution2}{" "}
+                      </h3>
+                    </Col>
                     <div>
                       <Bar
                         data={heightDistributionData}
@@ -208,14 +212,17 @@ const SurveyResults = ({ locale, toggleLocale }) => {
                       />
                     </div>
                   </div>
-                  <div className="chart-element">
-                    <h3>
-                      {genderDistributionData.mostFrequentResponse.count}{" "}
-                      {t.heightDistribution}{" "}
-                      <span className="pink">
-                        {genderDistributionData.mostFrequentResponse.response}
-                      </span>
-                    </h3>
+                  <div className="chart-element border-bottom">
+                    {" "}
+                    <Col xs={4} className="chart-headline">
+                      <h3>
+                        {genderDistributionData.mostFrequentResponse.count}{" "}
+                        {t.heightDistribution}{" "}
+                        <span className="pink">
+                          {genderDistributionData.mostFrequentResponse.response}
+                        </span>
+                      </h3>
+                    </Col>
                     <div>
                       <Bar
                         data={genderDistributionData}
@@ -224,9 +231,56 @@ const SurveyResults = ({ locale, toggleLocale }) => {
                       />
                     </div>
                   </div>
-                </div>
+                </div>{" "}
+                <Row>
+                  <h3> {t.satisfactionTitle} </h3>
+                  <Row className="satisfaction-container chart-element">
+                    <Col xs={4}>
+                      <div className="satisfaction-chart-element">
+                        <div className="border-bottom">
+                          <Bar
+                            data={exhibitionSatisfactionData}
+                            options={verticalOptions}
+                          />
+                        </div>{" "}
+                        <h2 className="satisfaction-chart-subtitles">
+                          {" "}
+                          {t.exhibitionSatisfactionChart1}{" "}
+                        </h2>
+                      </div>
+                    </Col>
+                    <Col xs={4}>
+                      <div className="satisfaction-chart-element">
+                        <div className="border-bottom">
+                          <Bar
+                            data={exhibitionReflectionData}
+                            options={verticalOptions}
+                          />
+                        </div>{" "}
+                        <h2 className="satisfaction-chart-subtitles">
+                          {" "}
+                          {t.exhibitionSatisfactionChart2}{" "}
+                        </h2>
+                      </div>
+                    </Col>
+                    <Col xs={4}>
+                      <div className="satisfaction-chart-element">
+                        <div className="border-bottom">
+                          <Bar
+                            data={emotionalImpactData}
+                            options={verticalOptions}
+                          />
+                        </div>{" "}
+                        <h2 className="satisfaction-chart-subtitles">
+                          {" "}
+                          {t.exhibitionSatisfactionChart3}{" "}
+                        </h2>
+                      </div>
+                    </Col>
+                  </Row>
+                </Row>
               </Col>
-              <Col>
+              <Col xs={4} className="border-bottom">
                 <div>
                   <div className="chart-element friend-request">
                     <div className="chart-headline">
@@ -274,50 +328,6 @@ const SurveyResults = ({ locale, toggleLocale }) => {
               </Col>
             </Row>
           </Col>
-          <Row className="satisfaction-container">
-            <Col>
-              <div className="satisfaction-chart-element">
-                <h3>
-                  {exhibitionSatisfactionData.mostFrequentResponse.count}{" "}
-                  {t.participantsFeel}{" "}
-                  {exhibitionSatisfactionData.mostFrequentResponse.response}
-                </h3>
-                <div>
-                  <Bar
-                    data={exhibitionSatisfactionData}
-                    options={verticalOptions}
-                  />
-                </div>
-              </div>
-            </Col>
-            <Col>
-              <div className="satisfaction-chart-element">
-                <h3>
-                  {exhibitionReflectionData.mostFrequentResponse.count}{" "}
-                  {t.participantsFeel}{" "}
-                  {exhibitionReflectionData.mostFrequentResponse.response}
-                </h3>
-                <div>
-                  <Bar
-                    data={exhibitionReflectionData}
-                    options={verticalOptions}
-                  />
-                </div>
-              </div>
-            </Col>
-            <Col>
-              <div className="satisfaction-chart-element">
-                <h3>
-                  {emotionalImpactData.mostFrequentResponse.count}{" "}
-                  {t.participantsFeel}{" "}
-                  {emotionalImpactData.mostFrequentResponse.response}
-                </h3>
-                <div>
-                  <Bar data={emotionalImpactData} options={verticalOptions} />
-                </div>
-              </div>
-            </Col>
-          </Row>
         </Row>
         <Row>
           <div className="start-nav">

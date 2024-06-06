@@ -11,7 +11,7 @@
 
           "imageLink": "http://localhost:3000/media/q1.jpg",
           "imageFit": "cover",
-          "imageHeight": "auto",
+          "imageHeight": "-webkit-fill-available",
           "imageWidth": "100%"
         },
         {
@@ -41,7 +41,10 @@
           ]
         }
       ],
-      "questionTitleLocation": "top"
+      "questionTitleLocation": "top",
+      "customCss": {
+        "navigation": "custom-navigation-buttons"
+      }
     },
     {
       "name": "height",
@@ -91,7 +94,7 @@
           "name": "question3IMG",
           "imageLink": "http://localhost:3000/media/q2.jpg",
           "imageFit": "cover",
-          "imageHeight": "auto",
+          "imageHeight": "100%",
           "imageWidth": "100%"
         },
         {
@@ -171,22 +174,26 @@
             {
               "value": "Madeleine Gonzalez",
               "text": "Madeleine Gonzalez",
-              "imageLink": "http://localhost:3000/media/q5-1.jpg"
+              "imageLink": "http://localhost:3000/media/q5-1.jpg",
+              "imageHeight": "-webkit-fill-available"
             },
             {
               "value": "Anton Frank",
               "text": "Anton Frank",
-              "imageLink": "http://localhost:3000/media/q3.jpg"
+              "imageLink": "http://localhost:3000/media/q5-2.jpg",
+              "imageHeight": "-webkit-fill-available"
             },
             {
               "value": "Elisabeth Stulta",
               "text": "Elisabeth Stulta",
-              "imageLink": "http://localhost:3000/media/q5-3.jpg"
+              "imageLink": "http://localhost:3000/media/q5-3.jpg",
+              "imageHeight": "-webkit-fill-available"
             },
             {
               "value": "Behinderter Mann",
               "text": "Behinderter Mann",
-              "imageLink": "http://localhost:3000/media/q5-4.jpg"
+              "imageLink": "http://localhost:3000/media/q5-4.jpg",
+              "imageHeight": "-webkit-fill-available"
             }
           ],
           "imageFit": "cover",
@@ -198,6 +205,7 @@
       "name": "satisfaction",
       "elements": [
         {
+          "customCss": "test",
           "type": "rating",
           "name": "exhibition1-satisfaction",
           "title": "Wie gefällt Dir die Ausstellung?",

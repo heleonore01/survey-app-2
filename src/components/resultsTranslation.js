@@ -14,6 +14,11 @@ const translations = {
     emotionalImpact: "Emotionale Auswirkungen",
     participantsFeel: "Teilnehmer*innen fühlen sich",
     startSurvey: "Starte die Umfrage",
+    satisfactionTitle: "Wie ist die Ausstellung?",
+    exhibitionSatisfactionChart1: "Mir gefällt die Ausstellung",
+    exhibitionSatisfactionChart2:
+      "Die Ausstellung hat mich zum NAchdenken gebracht",
+    exhibitionSatisfactionChart3: "Mich hat die Ausstellung berührt",
   },
   en: {
     ageDistribution: "Visitors are",
@@ -30,6 +35,7 @@ const translations = {
     emotionalImpact: "Emotional Impact",
     participantsFeel: "Participants feel",
     startSurvey: "Start the Survey",
+    satisfactionTitle: "How is the exhibition",
   },
 };
 
